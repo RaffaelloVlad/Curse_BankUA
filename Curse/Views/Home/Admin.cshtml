@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Вхід в адмінку";
+}
+
+<form method="post"  >
+    <h5 class="LabelClass">Конкурс Вгадай Пароль Адмінки</h5><br>
+    <input type="text" id="login" name="login" placeholder="Login" for="login" class="PlaceForLogin"><br>
+    <input type="password" id="password" name="password" placeholder="Password" for="password" class="PlaceForPass"><br>
+	<button type="submit" class="ButtonSubmit">Вхід</button>
+</form>
+
+<style>
+    h5{
+        color : deeppink;
+        text-shadow: 0 0 10px deeppink;
+    }
+
+    @@media (max-width: 576px) {
+        .PlaceForLogin{
+            width: 380px;
+            height: 37px;
+            margin-left:80px;
+            margin-top: 5px;
+        }
+    
+        .PlaceForPass{
+            width: 380px;
+            height: 37px;
+            margin-left:80px;
+            margin-top: 5px;
+        }
+    
+        .ButtonSubmit{
+            position: absolute;
+            width: 380px;
+            height: 34px;
+            margin-left: 80px;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+    
+        .LabelClass {
+            width: 380px;
+            height: 37px;
+            margin-left:116px;
+            margin-top: 50px;
+        }
+    
+    }
+
+
+     @@media (min-width: 576px) {
+        .PlaceForLogin {
+            width: 300px;
+            height: 30px;
+            margin-left: 460px;
+            margin-top: 10px;
+     
+        }
+
+        .PlaceForPass{
+            width: 300px;
+            height: 30px;
+            margin-left: 460px;
+            margin-top: 10px;
+        }
+
+        .ButtonSubmit{
+            position: absolute;
+            width: 300px;
+            height: 34px;
+            margin-left: 460px;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+
+        .LabelClass {
+            width: 380px;
+            height: 17px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+    }
+
+        
+                
+</style>

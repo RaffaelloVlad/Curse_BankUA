@@ -1,0 +1,64 @@
+﻿@using Curse.Controllers
+@using System.Data
+
+<h1 class="sas">Інфо депозитів по банку @SearchInDatabase.TempTempBankSearch</h1>
+<div class="scrollable">
+    <table style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Назва Депозиту</th>
+                <th>Час вкладання депозиту</th>
+                <th>Ставка (річний) без досроч закриття </th>
+                <th>Ставка (річний) з досроч закриттям</th>
+                <th>є досточне закриття</th>
+                <th>Документи для оформлення</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow item in SearchInDatabase.GetInfoDeposit.Rows)
+            {
+                <tr>
+                    <td>@item[0]</td>
+                    <td>@item[1] місю</td>
+                    <td>@((item[2].ToString() == "0") ? "нема" : $"{item[2]}%")</td>
+                    <td>@((item[3].ToString() == "0") ?  "нема" : $"{item[3]}%")</td>
+                    <td>@((item[4].ToString() == "True") ? "так" : "ні")</td>
+                    <td>@item[5] </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@*<button onclick="printPage()">Печать</button>   *@
+
+
+<style>
+    th {
+        padding: 10px;
+        color:white;
+/*        text-shadow: 0 0 10px white;*/
+    }
+    td{
+        padding: 10px;
+        text-shadow: 0 0 10px black;
+    }
+
+    .sas{
+       text-align: center;
+    }
+
+    h1{
+        color: gold; 
+        text-shadow: 0 0 10px gold;
+
+    }
+    
+
+</style>
+
+<script>
+  function printPage() {
+    window.print();
+  }
+</script>

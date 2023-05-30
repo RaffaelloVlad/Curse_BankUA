@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "Адмін панель";
+}
+
+
+<form method="post" action="AdminPanel" >
+    <h1>Додавання філіалів</h1>
+    <div>
+        <div>
+            <label for="firstComboBox">Місто:</label>
+            <div class="CommboBox">
+                <select asp-items="@(new SelectList(SearchInDatabase.GetStadName))"  name="AddSelectedStad" id="firstComboBox1"></select>    
+            </div>
+        </div>
+
+        <div >
+            <label for="secondComboBox">Банк :</label>
+            <div class="CommboBox">
+                <select  asp-items="@(new SelectList(SearchInDatabase.GetBankName))" name="AddsSelectedBank" id="secondComboBox2"></select>
+    
+            </div>
+        </div>
+        <div>
+             <input type="text" id="NumTel" name="NumTel" placeholder="Nummer Telefon" for="NumTel" onkeypress="return /[0-9]/i.test(event.key)" title="Можно вводить только цифры" maxlength="13"><br>
+             <input type="text" id="Adres" name="Adres" placeholder="Adres" for="Adres"><br>
+             <input type="text" id="NumFil" name="NumFil" placeholder="Nummer Filial" for="NumFil"><br>
+             <input type="time" id="TimeArbait" name="TimeArbait"  for="TimeArbait"><br>
+             <input type="range" step="0.1" min="0" max="5" id="rating" name="rating"  for="rating" oninput="updateValue(this.value)"><span id="rangeValue"></span><br>
+             <button type="submit" name="submit" id="submit">Додати</button>
+        </div>
+    </div>
+    <h1>Оновлення депозиту</h1>
+    <div>
+        <div >
+            <label for="secondComboBox">Назва депозиту :</label>
+            <div class="CommboBox">
+                <select  asp-items="@(new SelectList(SearchInDatabase.SelectPaymant))" name="UpdateSelectedBank" id="secondComboBox3"></select>
+            </div>
+        </div>
+        <div>
+            <input type="number" min="0" placeholder="TerminPayment" id="TerminPayment" name="TerminPayment" for="TerminPayment"><br>
+            <input type="number" min="0" placeholder="PayProcent" id="PayProcent" name="PayProcent" for="PayProcent"><br>
+            <input type="number" min="0" placeholder="YearRate" id="YearRate" name="YearRate" for="YearRate" step="0.5"><br>
+            <input type="hidden" id="EndBegin" value="0" name="EndBegin" for="EndBegin">
+            <input type="checkbox" id="EndBegin" value="1" name="EndBegin" for="EndBegin"><br>
+            <input type="text" id="DocumetPay" placeholder="DocumetPay" name="DocumetPay" for="DocumetPay"><br>
+            <button type="submit" name="submit2" id="submit2">Оновити</button>
+        </div>
+    </div>
+    <h1>Додавання депозиту</h1>
+    <div>
+        <div >
+            <label for="secondComboBox">Банк :</label>
+            <div class="CommboBox">
+                <select  asp-items="@(new SelectList(SearchInDatabase.GetBankName))" name="AddsSelectedBankDeposit" id="secondComboBox4"></select>
+            </div>
+        </div>
+        <div>
+            <input type="text" name="AddNamePaymant" id="AddNamePaymant" for="AddNamePaymant" placeholder="AddNamePaymant"><br>
+            <input type="number" min="0" placeholder="TerminPayment" id="TerminPayment2" name="TerminPayment2" for="TerminPayment2"><br>
+            <input type="number" min="0" placeholder="PayProcent" id="PayProcent2" name="PayProcent2" for="PayProcent2"><br>
+            <input type="number" min="0" placeholder="YearRate" id="YearRate2" name="YearRate2" for="YearRate2" step="0.5"><br>
+            <input type="hidden" id="EndBegin" value="0" name="EndBegin" for="EndBegin">
+            <input type="checkbox" id="EndBegin" value="1" name="EndBegin" for="EndBegin"><br>
+            <input type="text" id="DocumetPay2" placeholder="DocumetPay" name="DocumetPay2" for="DocumetPay2"><br>
+            <button type="submit" name="submit3" id="submit3">Додати</button>
+        </div>
+    </div>
+    <h1>Видалення депозитів</h1>
+    <div>
+        <div >
+            <label for="secondComboBox">Назва депозиту :</label>
+            <div class="CommboBox">
+                <select  asp-items="@(new SelectList(SearchInDatabase.SelectPaymant))" name="DeletSelectedPaymant" id="secondComboBox3"></select>
+            </div>
+        </div>
+        <div>
+            <button type="submit" name="submit4" id="submit4">Видалити</button>
+        </div>
+    </div>
+    <h1>Додавання Кредиту</h1>
+    <div>
+        <div >
+            <label for="secondComboBox">Банк :</label>
+            <div class="CommboBox">
+                <select  asp-items="@(new SelectList(SearchInDatabase.GetBankName))" name="AddsSelectedBankCredit" id="secondComboBox4"></select>
+            </div>
+        </div>
+        <div>
+            <input type="text" placeholder="NameCredit" name="NameCredit" for="NameCredit" id="NameCredit"><br>
+            <input type="number" step="100" placeholder="MaxSumCredit" name="MaxSumCredit" for="MaxSumCredit" id="MaxSumCredit"><br>
+            <input type="number" placeholder="ProcentCredit" name="ProcentCredit" for="ProcentCredit" id="ProcentCredit"><br>
+            <input type="number" placeholder="TempContract" name="TempContract" for="TempContract" id="TempContract"><br>
+            <input type="number" placeholder="RealProcentCredit" name="RealProcentCredit" for="RealProcentCredit" id="RealProcentCredit"><br>
+            <input type="number" placeholder="ErstPay" name="ErstPay" for="ErstPay" id="ErstPay"><br>
+            <input type="text" placeholder="DocumentCredit" name="DocumentCredit" for="DocumentCredit" id="DocumentCredit"><br>
+            <input type="text" placeholder="Description_" name="Description_" for="Description_" id="Description_"><br>
+            <input type="number" placeholder="Commision" name="Commision" for="Commision" id="Commision"><br>
+            <button type="submit" name="submit5" id="submit4">Додати</button>
+        </div>
+    </div>
+@*    <h1>Оновлення кредиту</h1>
+    <div>
+        <div >
+            <label for="secondComboBox">Банк :</label>
+            <div class="CommboBox">
+                <select  asp-items="@(new SelectList(SearchInDatabase.SelectCredit))" name="UpdateSelectedBankCredit" id="secondComboBox4"></select>
+            </div>
+        </div>
+        <div>
+            <button type="submit" name="submit6" id="submit4">Оновити</button>
+        </div>
+    </div>
+    <h1>Видалення кредиту</h1>
+    <div>
+        <div >
+            <label for="secondComboBox">Банк :</label>
+            <div class="CommboBox">
+                <select  asp-items="@(new SelectList(SearchInDatabase.SelectCredit))" name="DeleteSelectedBankCredit" id="secondComboBox4" ></select>
+            </div>
+        </div>
+        <div>
+            <button type="submit" name="submit7" id="submit4">Видалити</button>
+        </div>
+    </div>*@
+</form>
+
+        
+
+<script>
+function updateValue(val) {
+  document.getElementById("rangeValue").innerHTML = val;
+}
+</script>

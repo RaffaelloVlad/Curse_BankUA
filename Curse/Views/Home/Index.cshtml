@@ -1,0 +1,154 @@
+﻿@{
+    ViewData["Title"] = "Головна";
+}
+<form method="post" action="@Url.Action("Resultat", "Home")">
+
+<div >
+
+    <div class="KastomBunt">
+        <label for="firstComboBox"><b>Місто:</b></label>
+        <select asp-items="@(new SelectList(SearchInDatabase.GetStadName))" class="CommboBox" name="selectedStad" id="firstComboBox"></select>    
+    </div>
+
+    <div class="KastomBunt1">
+        <label for="secondComboBox"><b>Банк :</b></label>
+        <select  asp-items="@(new SelectList(SearchInDatabase.GetBankName))" class="CommboBox" name="selectedBank" id="secondComboBox"></select>
+    </div>
+</div>
+
+
+    <input type="submit" name="submit" id="submit" value="Шукати" class="CommboBoxButton" onclick="myFunction()" />
+    
+        <style>
+            @@media (max-width: 576px) {
+
+                .CommboBoxButton {
+                    background: #ccc;
+                    border: none;
+                    padding: 5px 30px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    border-radius: 14px;
+                    cursor: pointer;
+                    transition-duration: 0.3s;
+                    margin-left: 40px;    
+                    margin-top:50px;
+                }
+
+                .KastomBunt {
+                    margin-top: 50px;
+                    width: 213px;
+                    height: 34px;
+                    left: 10px;
+                    top: 100px;
+                
+                }
+
+                .KastomBunt1 {
+                    margin-top: 50px;
+                    width: 416px;
+                    height: 34px;
+                    left: 10px;
+                    top: 150px;
+                }
+
+                .KastomBunt2 {
+                    margin-top: 50px;
+                    width: 416px;
+                    height: 34px;
+                    left: 10px;
+                    top: 350px;
+                }
+                .KastomBunt3 {
+                    margin-top: 50px;
+                    width: 313px;
+                    height: 34px;
+                    left: 10px;
+                    top: 300px;
+
+                }
+            }
+
+
+
+                .CommboBox{
+                    background :#ccc ;
+                }
+
+
+
+            @@media (min-width: 576px) {
+                .KastomBunt {
+                    position: absolute;
+                    width: 240px;
+                    height: 34px;
+                    left: 190px;
+                    top: 250px;
+                    font-size: 18px;
+                }
+
+                .KastomBunt1 {
+                    position: absolute;
+                    width: 480px;
+                    height: 34px;
+                    left: 434px;
+                    top: 250px;
+                    font-size: 18px;
+                }
+
+                .CommboBoxButton {
+                    background: #ccc;
+                    border: none;
+                    padding: 2px 30px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    border-radius: 14px;
+                    cursor: pointer;
+                    transition-duration: 0.3s;
+                    margin-left: 790px;
+                    margin-top: 177px;
+                }
+            
+                .KastomBunt2 {
+                position: absolute;
+                width: 230px;
+                height: 34px;
+                left: 500px;
+                top: 450px;
+                font-size: 18px;
+                }
+
+                .KastomBunt3 {
+                position: absolute;
+                width: 305px;
+                height: 34px;
+                left: 190px;
+                top: 450px;
+                font-size: 18px;
+                }
+            }
+        
+                    
+
+        </style>
+</form>
+<form method="post" action="@Url.Action("Dop", "Home")">
+    <div >
+
+    <div class="KastomBunt3">
+        <label for="firstComboBox"><b>NameCredit:</b></label>
+        <select asp-items="@(new SelectList(SearchInDatabase.SelectCreditNameCredit))" class="CommboBox" name="SelectCreditNameCredit" id="firstComboBox2"></select>    
+    </div>
+
+    <div class="KastomBunt2">
+        <label for="secondComboBox"><b>TempContract :</b></label>
+        <select  asp-items="@(new SelectList(SearchInDatabase.SelectCreditTempContract))" class="CommboBox" name="SelectCreditTempContract" id="secondComboBox2"></select>
+    </div>
+</div>
+    <input type="submit" name="submit2" id="submit2" value="Шукати_2.0" class="CommboBoxButton" />
+</form>
+                    

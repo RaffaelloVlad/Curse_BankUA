@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Результат пошуку";
+}
+@using Curse.Controllers
+@using System.Data
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+@*@foreach (DataRow item in SearchInDatabase.GetStadPlusBank.Rows)
+{	
+			<div class="CastomResultat"> 
+				<div> м.@item[0].ToString() @item[1].ToString() №@item[2].ToString() </div>
+			</div>
+}
+*@
+<form method="post" action="@Url.Action("Resultat")">
+    <div class="fixed">
+        <div style="border: 1px solid black;">
+            <div style="padding: 10px;">Банк <b><a class="collorA" href="https://www.google.com/search?q=@SearchInDatabase.TempTempBankSearch" target="_blank">@SearchInDatabase.TempTempBankSearch</a></b></br> заснований в <b>м.@SearchInDatabase.GetStadBankCreate</b></br> засновник <b>@SearchInDatabase.GetManBankCreate</b></br> Контакт-центр <b><a class="collorA" href="tel:@SearchInDatabase.GetTellNummBank">@SearchInDatabase.GetTellNummBank</a></b></br> <a class="collorA" href="@Url.Action("Credit")" >Кредит</a></br>  <a class="collorA" href="@Url.Action("Deposit")" >Депозит</a></div>  
+            @*<input type="submit" name="PrintPDF" id="PrintPDF" value="submit" formaction="@Url.Action("Credit")" />*@
+            
+        </div>
+    </div>
+</form>
+
+
+<div class="scrollable">
+    <table style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Місто</th>
+                <th>Банк</th>
+                <th>Номер Відділення</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow item in SearchInDatabase.GetStadPlusBank.Rows)
+            {
+                <tr>
+                    <td>м.@item[0]</td>
+                            <td><a class="collorA" href="https://www.google.com/maps/search/?api=1&query=@item[1]+@item[0]+Відділення+@SearchInDatabase.TempTempBankSearch"  target="_blank" >@item[1]</a></td>
+                    <td>№@item[2]</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<style>
+    th {
+        padding: 10px; 
+        color:gold;
+        text-shadow: 0 0 10px gold;
+    }
+    td{
+        padding: 10px;
+    }
+
+
+
+    @@media (max-width: 576px) {
+        .scrollable {
+            margin-left: 10px; 
+            padding: 20px;
+        }
+
+    }
+
+    @@media (min-width: 992px) {
+        .fixed {
+            position: fixed;
+            top: 1;
+            right: 0;
+            width: auto; 
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0);
+            overflow: auto; 
+        }
+
+        .scrollable {
+            margin-left: 300px; 
+            padding: 20px;
+        }
+    }
+
+    .collorA {
+      color: white;
+      text-decoration: none;
+    }
+
+
+</style>
+
+

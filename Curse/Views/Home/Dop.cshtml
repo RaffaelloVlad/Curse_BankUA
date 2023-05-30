@@ -1,0 +1,70 @@
+﻿@using Curse.Controllers
+@using System.Data
+
+<h1 class="sas">Інфо кредиту @SearchInDatabase.TempNameCredit</h1>
+
+<div class="scrollable">
+    <table style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Назва Банку</th>
+                <th>Назва Кредиту</th>
+                <th>Макс Сумм</th>
+                <th>Процент місяць</th>
+                <th>На який термін</th>
+                <th>Реальна процентна ставка</th>
+                <th>Перший платіж</th>
+                <th>Документи для оформлення</th>
+                <th>Опис</th>
+                <th>Комісія</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow item in SearchInDatabase.GetInfoCreditDop.Rows)
+            {
+                <tr>
+                    <td>@item[0]</td>
+                    <td>@item[1]</td>
+                    <td>@item[2] грн.</td>
+                    <td>@item[3]%</td>
+                    <td>@item[4] міс.</td>
+                    <td>@item[5]%</td>
+                    <td>@item[6] грн.</td>
+                    <td>@item[7]</td>
+                    <td>@item[8]</td>
+                    <td>@item[9]%</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+<style>
+    th {
+        padding: 10px;
+        color: white;
+/*        text-shadow: 0 0 10px white;*/
+    }
+    td{
+        padding: 10px;
+        text-shadow: 0 0 10px black;
+    }
+
+    .sas{
+       text-align: center;
+    }
+
+    h1{
+        color: gold; 
+        text-shadow: 0 0 10px gold;
+    }
+
+    .sas{
+       text-align: center;
+    }
+
+
+</style>
